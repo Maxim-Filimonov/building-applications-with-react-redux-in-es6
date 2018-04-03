@@ -1,9 +1,14 @@
 import HomePage from "./HomePage";
+import { MemoryRouter } from "react-router";
 import React from "react";
-import { shallow } from "enzyme";
+import { mount } from "enzyme";
 
 describe("HomePage", () => {
   it("renders", () => {
-    shallow(<HomePage />);
+    mount(
+      <MemoryRouter>
+        <HomePage />
+      </MemoryRouter>
+    );
   });
 });

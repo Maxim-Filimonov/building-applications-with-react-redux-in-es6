@@ -6,17 +6,13 @@
     {
       "type": "npm",
       "script": "start",
-      "problemMatcher": [
-        "$eslint-stylish"
-      ]
+      "problemMatcher": ["$eslint-stylish"]
     },
     {
       "type": "npm",
       "script": "lint:watch",
       "isBackground": true,
-      "problemMatcher": [
-        "$eslint-stylish"
-      ]
+      "problemMatcher": ["$eslint-stylish"]
     },
     {
       "type": "npm",
