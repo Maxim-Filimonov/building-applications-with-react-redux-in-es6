@@ -1,4 +1,5 @@
 import "babel-polyfill";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 import AboutPage from "./components/about/AboutPage";
 import App from "./components/App";
@@ -8,10 +9,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Routes from "./routes";
 import history from "history";
 import { render } from "react-dom";
-
-// import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-
-// import styles from "./styles/styles.css";
+import styles from "./styles/styles.css";
 
 render(
   <Router>

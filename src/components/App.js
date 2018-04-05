@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+import Header from "./common/Header";
 import PropTypes from "prop-types";
 
 class App extends Component {
@@ -8,7 +9,12 @@ class App extends Component {
     this.state = {};
   }
   render() {
-    return <div className="container-fluid">{this.props.children}</div>;
+    return (
+      <div className="container-fluid">
+        <Header />
+        {this.props.children}
+      </div>
+    );
   }
 }
 
