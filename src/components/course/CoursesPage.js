@@ -2,11 +2,12 @@ import * as courseActions from "../../actions/courseActions";
 
 import React, { Component } from "react";
 
+import CourseList from "./CourseList";
 import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
-export class CoursesPage extends Component {
+class CourseManage extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
@@ -25,19 +26,27 @@ export class CoursesPage extends Component {
     const { course: { title } } = this.state;
     actions.createCourse({ title });
   }
+  render() {
+    const course = this.state;
+    return (
+      <div>
+        <h2>Add Course</h2>
+        <input type="text" onChange={this.onTitleChange} value={course.title} />
+        <input type="submit" value="Save" onClick={this.onClickSave} />
+      </div>
+    );
+  }
+}
+export class CoursesPage extends Component {
   renderCourse(course, index) {
     return <div key={index}>{course.title}</div>;
   }
   render() {
-    const course = this.state;
     const { courses } = this.props;
     return (
       <div>
         <h1>Courses</h1>
-        {courses.map(this.renderCourse)}
-        <h2>Add Course</h2>
-        <input type="text" onChange={this.onTitleChange} value={course.title} />
-        <input type="submit" value="Save" onClick={this.onClickSave} />
+        <CourseList courses={courses} />
       </div>
     );
   }

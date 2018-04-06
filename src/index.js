@@ -10,10 +10,12 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Routes from "./routes";
 import configureStore from "./store/configureStore";
 import history from "history";
+import { loadCourse } from "./actions/courseActions";
 import { render } from "react-dom";
 import styles from "./styles/styles.css";
 
 const store = configureStore();
+store.dispatch(loadCourse());
 
 render(
   <Provider store={store}>

@@ -1,5 +1,6 @@
+import { createCourse, loadCoursesSuccess } from "../actions/courseActions";
+
 import courseReducer from "./courseReducer";
-import { createCourse } from "../actions/courseActions";
 
 it("has no courses by default", () => {
   expect(courseReducer()).toEqual([]);
@@ -9,4 +10,14 @@ it("adds a new course", () => {
 
   expect(newState.length).toEqual(1);
   expect(newState[0].title).toEqual("somecourse");
+});
+it("adds courses after load", () => {
+  const newState = courseReducer([], loadCoursesSuccess([1, 2, 3]));
+
+  expect(newState.length).toEqual(3);
+});
+it("does not reload over existing courses", () => {
+  const newState = courseReducer([1, 2], loadCoursesSuccess([1, 2, 3]));
+
+  expect(newState.length).toEqual(5);
 });
