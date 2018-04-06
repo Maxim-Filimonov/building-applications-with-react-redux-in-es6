@@ -1,3 +1,4 @@
+import { CREATE_COURSE } from "../actions/types";
 import { fromJS } from "immutable";
 
 const onCreateCourse = (state, action) => {
@@ -5,9 +6,9 @@ const onCreateCourse = (state, action) => {
     .push(action.course)
     .toJS();
 };
-const handlerMap = {
-  CREATE_COURSE: onCreateCourse
-};
+const handlerMap = {};
+handlerMap[CREATE_COURSE] = onCreateCourse;
+
 const courseReducer = (state = [], action = {}) => {
   const handler = handlerMap[action.type];
   if (handler) {
