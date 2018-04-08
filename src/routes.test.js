@@ -6,6 +6,7 @@ import About from "./components/about/AboutPage";
 import App from "./components/App";
 import Courses from "./components/course/CoursesPage";
 import Home from "./components/home/HomePage";
+import CourseManage from './components/course/CourseManagePage';
 import { MemoryRouter } from "react-router";
 import { Provider } from "react-redux";
 import Routes from "./routes";
@@ -34,5 +35,10 @@ describe("#routes", () => {
     const component = renderRoutes("/courses");
 
     expect(component.find(Courses)).toHaveLength(1);
+  });
+  it("renders courses manage page for /course", () => {
+    const component = renderRoutes("/course/javascript");
+
+    expect(component.find(CourseManage)).toHaveLength(1);
   });
 });
