@@ -1,8 +1,7 @@
 {
   "name": "pluralsight-redux-starter",
   "version": "1.0.0",
-  "description":
-    "Starter kit for React and Redux Pluralsight course by Cory House",
+  "description": "Starter kit for React and Redux Pluralsight course by Cory House",
   "author": "Cory House",
   "license": "MIT",
   "dependencies": {
@@ -11,6 +10,7 @@
     "immutable": "^3.8.2",
     "jquery": "2.2.3",
     "prop-types": "^15.6.1",
+    "ramda": "^0.25.0",
     "react": "^15.5.0",
     "react-dom": "^15.5.0",
     "react-redux": "4.4.5",
@@ -32,11 +32,12 @@
   },
   "jest": {
     "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
-        "<rootDir>/tools/assetsTransformer.js",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/tools/assetsTransformer.js",
       "\\.(css)$": "<rootDir>/tools/assetsTransformer.js"
     },
-    "setupFiles": ["./tools/enzymeTestAdapterSetup.js"]
+    "setupFiles": [
+      "./tools/enzymeTestAdapterSetup.js"
+    ]
   },
   "devDependencies": {
     "babel-cli": "6.8.0",
