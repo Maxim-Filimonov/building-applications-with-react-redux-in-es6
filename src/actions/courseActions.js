@@ -1,5 +1,6 @@
 import * as types from "./types";
 
+import R from "ramda";
 import courseApi from "../api/mockCourseApi";
 
 export const createCourse = course => {
@@ -24,3 +25,17 @@ export function loadCourse() {
         throw err;
       });
 }
+export function loadSingleCourse(id) {
+  return dispatch =>
+    courseApi
+      .findCourse(id)
+      .then(course => dispatch(loadSingleCourseSuccess(course)))
+      .catch(err => {
+        throw err;
+      });
+}
+
+export const loadSingleCourseSuccess = course => ({
+  type: types.LOAD_SINGLE_COURSE_SUCCESS,
+  course
+});
