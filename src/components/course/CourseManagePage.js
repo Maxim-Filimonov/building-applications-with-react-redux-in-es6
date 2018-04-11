@@ -10,6 +10,7 @@ export class CourseManagePage extends Component {
     super(props, context);
     this.onChange = this.onChange.bind(this);
     this.onSave = this.onSave.bind(this);
+    this.state = {};
   }
   componentDidMount() {
     const {
@@ -18,16 +19,24 @@ export class CourseManagePage extends Component {
     } = this.props;
     loadSingleCourse(id);
   }
-  onChange(e) {}
-  onSave(e) {}
+  getCourse() {
+    return Object.assign({}, this.props.selectedCourse, this.state);
+  }
+  onChange(e) {
+    const name = e.target.name;
+    const newState = Object.assign({}, this.state);
+    newState[name] = e.target.value;
+    this.setState(newState);
+  }
+  onSave(e) {
+    const { actions: { saveCourse } } = this.props;
+    saveCourse(this.getCourse());
+  }
   render() {
-    if (
-      this.props.selectedCourse &&
-      this.props.selectedCourse.id !== undefined
-    ) {
+    if (this.props.selectedCourse) {
       return (
         <CourseForm
-          course={this.props.selectedCourse}
+          course={this.getCourse()}
           onChange={this.onChange}
           onSave={this.onSave}
         />

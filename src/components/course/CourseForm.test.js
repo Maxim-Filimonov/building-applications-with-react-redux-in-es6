@@ -21,7 +21,7 @@ describe("<CourseForm />", () => {
     const onSave = jest.fn();
     const component = render({ onSave: onSave });
 
-    component.find("form").simulate("submit");
+    component.find("form").simulate("submit", { preventDefault: jest.fn() });
 
     expect(onSave).toHaveBeenCalled();
   });

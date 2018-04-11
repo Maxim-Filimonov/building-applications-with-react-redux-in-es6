@@ -16,6 +16,16 @@ export function loadCoursesSuccess(courses) {
     courses
   };
 }
+export const createCourseSuccess = course => ({
+  type: types.CREATE_COURSE_SUCCESS,
+  course
+});
+
+export const updateCourseSuccess = course => ({
+  type: types.UPDATE_COURSE_SUCCESS,
+  course
+});
+
 export function loadCourse() {
   return dispatch =>
     courseApi
@@ -34,6 +44,14 @@ export function loadSingleCourse(id) {
         throw err;
       });
 }
+export const saveCourse = course => dispatch =>
+  courseApi.saveCourse(course).then(savedCourse => {
+    if (course.id) {
+      dispatch(updateCourseSuccess(savedCourse));
+    } else {
+      dispatch(createCourseSuccess(savedCourse));
+    }
+  });
 
 export const loadSingleCourseSuccess = course => ({
   type: types.LOAD_SINGLE_COURSE_SUCCESS,

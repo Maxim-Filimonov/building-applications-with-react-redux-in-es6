@@ -13,7 +13,12 @@ const CourseForm = ({
 }) => {
   if (!loading) {
     return (
-      <form onSubmit={onSave}>
+      <form
+        onSubmit={e => {
+          e.preventDefault();
+          onSave(e);
+        }}
+      >
         <h1>Manage Course</h1>
         <TextInput
           name="title"
@@ -45,6 +50,7 @@ const CourseForm = ({
           onChange={onChange}
           error={errors.category}
         />
+        <input type="submit" value="Save" className="form-control" />
       </form>
     );
   } else {
